@@ -1,0 +1,20 @@
+let fs = require('fs');
+let path = require('path');
+
+let dir = process.argv[2];
+let ext = "." + process.argv[3];
+
+fs.readdir(dir, print);
+
+function print(err, list){
+    if(err){
+	return console.error(err);
+    }
+    list.forEach(checkExt);
+};
+
+function checkExt(item){
+    if(path.extname(item) === ext){
+	console.log(item);
+    }
+}
